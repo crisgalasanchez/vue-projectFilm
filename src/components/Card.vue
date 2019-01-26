@@ -17,7 +17,8 @@
             <v-btn
                 color="red"
                 dark
-                depressed>
+                depressed
+                v-on:click="showInfo">
                 More info
             </v-btn>
         </v-card-actions>
@@ -39,6 +40,9 @@ export default {
             }else{
                 return poster;
             }
+        },
+        showInfo(){
+            this.$router.push('/'+this._props.film.imdbID);
         }
     }
 };

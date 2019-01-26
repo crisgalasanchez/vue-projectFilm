@@ -28,8 +28,6 @@ export default {
       this.error = '';
       if(this.validateForm(searchTitle)){
         let listfilms = this.callApi(searchTitle);
-      }else{
-        this.error = 'Introduce a title'
       }
     },
     validateForm(searchTitle){
