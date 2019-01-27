@@ -1,14 +1,17 @@
 <template>
     <div>
-        <Search v-on:searchFilm="searchFilm"/>
+        <Search 
+          v-on:searchFilm="searchFilm"
+          v-on:clearSearch="clearSearch"
+          v-bind:error="error"/>
         <FilmList v-bind:listFilms="listFilms"/>
     </div>
 </template>
 
 <script>
 import axios from 'axios'
-import Search from '../components/Search.vue'
-import FilmList from '../components/FilmList.vue'
+import Search from '@/components/Search.vue'
+import FilmList from '@/components/FilmList.vue'
 
 export default {
   name: 'Home',
@@ -25,13 +28,14 @@ export default {
   },
   methods: {
     searchFilm(searchTitle){
-      this.error = '';
       if(this.validateForm(searchTitle)){
-        let listfilms = this.callApi(searchTitle);
+        this.callApi(searchTitle);
+      }else{
+        this.listFilms =  []
       }
     },
     validateForm(searchTitle){
-      return searchTitle.length > 0;
+      return searchTitle != null && searchTitle.length > 0;
     },
     callApi(searchTitle){
       let url = 'https://www.omdbapi.com/?apikey=f12ba140&s=';
@@ -44,8 +48,11 @@ export default {
       })
       .catch(error => {
         console.log(error)
-        this.error = 'Were having problems. Try again later'
+        this.error = 'We are having problems. Try again later'
       })
+    },
+    clearSearch(){
+      this.listFilms =  []
     }
   }
 };
