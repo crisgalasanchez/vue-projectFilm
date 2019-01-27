@@ -1,6 +1,6 @@
 <template>
     <v-card mx-auto weight="200px">
-        <v-img :src="existsPoster(film.Poster)">
+        <v-img :src="existsPoster">
         <v-layout
             align-end
             fill-height
@@ -33,14 +33,14 @@ export default {
             type: Object
         }
     },
+    computed: {
+        existsPoster: function () {
+            return (this._props.film.Poster === 'N/A')
+                ? 'https://www.classicposters.com/images/nopicture.gif'
+                : this._props.film.Poster ;
+        }
+    },
     methods: {
-        existsPoster(poster){
-            if(poster === 'N/A'){
-                return 'https://www.classicposters.com/images/nopicture.gif';
-            }else{
-                return poster;
-            }
-        },
         showInfo(){
             this.$router.push('/'+this._props.film.imdbID);
         }

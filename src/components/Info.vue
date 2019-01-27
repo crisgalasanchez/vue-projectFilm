@@ -4,7 +4,7 @@
             <v-layout>
                 <v-flex xs4 pa-3>
                     <v-img
-                        :src="filmInfo.Poster"
+                        :src="existsPoster"
                         height="250px"
                         contain>
                     </v-img>
@@ -14,6 +14,7 @@
                         <div>
                             <h4 class="display-1">{{filmInfo.Title}}</h4>
                             <h5 class="pa-3">DIRECTOR: {{filmInfo.Director}} {{filmInfo.Year}}</h5>
+                            <h5 class="headline font-weight-bold">Plot</h5>
                             <p>{{filmInfo.Plot}}</p>
                         </div>
                     </v-card-title>
@@ -34,6 +35,13 @@ export default {
     data(){
         return {
             filmInfo : {}
+        }
+    },
+    computed: {
+        existsPoster: function () {
+            return (this.filmInfo.Poster === 'N/A')
+                ? 'https://www.classicposters.com/images/nopicture.gif'
+                : this.filmInfo.Poster ;
         }
     },
     mounted(){
