@@ -2,7 +2,7 @@
   <v-app>
     <router-view></router-view>
   </v-app>
-</template> 
+</template>
 
 <script>
 export default {

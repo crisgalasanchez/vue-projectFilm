@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Search 
+        <Search
           v-on:searchFilm="searchFilm"
           v-on:clearSearch="clearSearch"
           v-bind:error="error"/>
@@ -19,41 +19,40 @@ export default {
     Search,
     FilmList
   },
-  data() {
-    return{
-      listFilms :[],
-      searchTitle:'',
+  data () {
+    return {
+      listFilms: [],
+      searchTitle: '',
       error: ''
     }
   },
   methods: {
-    searchFilm(searchTitle){
-      if(this.validateForm(searchTitle)){
-        this.callApi(searchTitle);
-      }else{
-        this.listFilms =  []
+    searchFilm (searchTitle) {
+      if (this.validateForm(searchTitle)) {
+        this.callApi(searchTitle)
+      } else {
+        this.listFilms = []
       }
     },
-    validateForm(searchTitle){
-      return searchTitle != null && searchTitle.length > 0;
+    validateForm (searchTitle) {
+      return searchTitle != null && searchTitle.length > 0
     },
-    callApi(searchTitle){
-      let url = 'https://www.omdbapi.com/?apikey=f12ba140&s=';
-      url += searchTitle;
-      
+    callApi (searchTitle) {
+      let url = 'https://www.omdbapi.com/?apikey=f12ba140&s='
+      url += searchTitle
       axios
-      .get(url)
-      .then(response => {
-        this.listFilms = response.data.Search
-      })
-      .catch(error => {
-        console.log(error)
-        this.error = 'We are having problems. Try again later'
-      })
+        .get(url)
+        .then(response => {
+          this.listFilms = response.data.Search
+        })
+        .catch(error => {
+          console.log(error)
+          this.error = 'We are having problems. Try again later'
+        })
     },
-    clearSearch(){
-      this.listFilms =  []
+    clearSearch () {
+      this.listFilms = []
     }
   }
-};
+}
 </script>

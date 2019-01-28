@@ -6,10 +6,10 @@
       </v-flex>
     </v-layout>
   </v-container>
-</template> 
+</template>
 
 <script>
-import Card from '@/components/Card.vue';
+import Card from '@/components/Card.vue'
 
 export default {
   name: 'FilmList',
@@ -21,8 +21,7 @@ export default {
       type: Array
     }
   }
-};
- 
+}
 </script>
 
 <style scoped>

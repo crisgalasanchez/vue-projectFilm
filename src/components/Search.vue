@@ -1,6 +1,6 @@
 <template>
   <div>
-		<h1 display-4 font-weight-bold >Find your movie...</h1>
+    <h1 display-4 font-weight-bold >Find your movie...</h1>
     <v-layout justify-center>
       <v-flex xs10 sm6>
         <v-form ref="form">
@@ -13,12 +13,12 @@
             @click:clear="(clearSearch())"
           ></v-text-field>
         </v-form>
-          
+
         <span v-if="error.length > 0"  class="error">
           {{this._props.error}}
         </span>
-      </v-flex>	
-    </v-layout> 
+      </v-flex>
+    </v-layout>
   </div>
 </template>
 
@@ -27,23 +27,23 @@ export default {
   name: 'Search',
   props: {
     error: {
-        type: String
+      type: String
     }
   },
-  data() {
-    return{
-      searchTitle:''
+  data () {
+    return {
+      searchTitle: ''
     }
   },
-  methods:{
-    searchFilm(searchTitle){
-      this.$emit('searchFilm', searchTitle);
+  methods: {
+    searchFilm (searchTitle) {
+      this.$emit('searchFilm', searchTitle)
     },
-    clearSearch(){
-      this.$emit('clearSearch');
+    clearSearch () {
+      this.$emit('clearSearch')
     }
   }
-};
+}
 </script>
 
 <style scoped>

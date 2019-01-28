@@ -27,25 +27,25 @@
 
 <script>
 export default {
-	name: 'Card',
-    props: {
-        film: {
-            type: Object
-        }
-    },
-    computed: {
-        existsPoster: function () {
-            return (this._props.film.Poster === 'N/A')
-                ? 'https://www.classicposters.com/images/nopicture.gif'
-                : this._props.film.Poster ;
-        }
-    },
-    methods: {
-        showInfo(){
-            this.$router.push('/'+this._props.film.imdbID);
-        }
+  name: 'Card',
+  props: {
+    film: {
+      type: Object
     }
-};
+  },
+  computed: {
+    existsPoster: function () {
+      return (this._props.film.Poster === 'N/A')
+        ? 'https://www.classicposters.com/images/nopicture.gif'
+        : this._props.film.Poster
+    }
+  },
+  methods: {
+    showInfo () {
+      this.$router.push('/' + this._props.film.imdbID)
+    }
+  }
+}
 </script>
 
 <style scoped>

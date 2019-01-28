@@ -31,32 +31,32 @@
 
 <script>
 export default {
-    name: 'Info',
-    data(){
-        return {
-            filmInfo : {}
-        }
-    },
-    computed: {
-        existsPoster: function () {
-            return (this.filmInfo.Poster === 'N/A')
-                ? 'https://www.classicposters.com/images/nopicture.gif'
-                : this.filmInfo.Poster ;
-        }
-    },
-    mounted(){
-        const URL = 'https://www.omdbapi.com/?apikey=f12ba140&i=' + this.$route.params.id;
-        fetch(URL)
-        .then(response => response.json())
-        .then(json => {
-            this.filmInfo=json
-        });
-    },
-    methods:{
-        backToFilms(){
-            this.$router.go(-1)
-        }
+  name: 'Info',
+  data () {
+    return {
+      filmInfo: {}
     }
+  },
+  computed: {
+    existsPoster: function () {
+      return (this.filmInfo.Poster === 'N/A')
+        ? 'https://www.classicposters.com/images/nopicture.gif'
+        : this.filmInfo.Poster
+    }
+  },
+  mounted () {
+    const URL = 'https://www.omdbapi.com/?apikey=f12ba140&i=' + this.$route.params.id
+    fetch(URL)
+      .then(response => response.json())
+      .then(json => {
+        this.filmInfo = json
+      })
+  },
+  methods: {
+    backToFilms () {
+      this.$router.go(-1)
+    }
+  }
 }
 </script>
 
@@ -67,4 +67,3 @@ export default {
   margin:10px 20px;
 }
 </style>
-
